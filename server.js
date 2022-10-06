@@ -10,12 +10,12 @@ const image = require('./controllers/image');
 const { Client } = require('pg');
 
 //connect server to database
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false
-//   }
-// });
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 const db = knex({
   client: "pg",
@@ -27,13 +27,7 @@ const db = knex({
   }
 });
 
-// client.connect();
-
-//query statement, the knex builder made query request
-// db.select('*')
-//   .from('users').then(data => {
-//     // console.log(data);
-//   });
+client.connect();
 
 /*
 everytime server is restarted, everything is run again
@@ -52,7 +46,6 @@ app.get('/', (req, res) => {
 app.get('/favicon.ico', (req, res) => {
   res.send('Favicon?');
 })
-
 //REGISTER -> for REG, SIGN-IN, PROFILE_ID, IMAGE, we are doing dependency injection
 app.post('/register', (req, res) => { 
   register.handleRegister(req, res, db, bcrypt);
