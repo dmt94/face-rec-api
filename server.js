@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
@@ -21,10 +21,10 @@ const db = knex({
   }
 });
 //query statement, the knex builder made query request
-db.select('*')
-  .from('users').then(data => {
-    // console.log(data);
-  });
+// db.select('*')
+//   .from('users').then(data => {
+//     // console.log(data);
+//   });
 
 /*
 everytime server is restarted, everything is run again
