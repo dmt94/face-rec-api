@@ -57,12 +57,13 @@ app.get('/profile/:id', (req, res) => {
   profile.handleProfileGet(req, res, db) ;
 })
 //IMAGE
-app.post('https://frozen-eyrie-32291.herokuapp.com/imageurl' , (req, res) => {
-  image.handleApiCall(req, res);
-})
+
 //update user information, updates entries by increasing count, updates user profile's counter to reflect image uploads
-app.put('https://frozen-eyrie-32291.herokuapp.com/image' , (req, res) => {
+app.put('/image' , (req, res) => {
   image.handleImage(req, res, db);
+})
+app.post('/imageurl' , (req, res) => {
+  image.handleApiCall(req, res);
 })
 
 
