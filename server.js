@@ -71,9 +71,7 @@ const PORT = process.env.PORT || 3000;
 
 console.log(PORT);
 
-app.listen(PORT, () => {
-  console.log(`app is running on port ${PORT}`);
-})
+app.listen(PORT);
 /*
 /            (root)==> res = this is working
 /signin            ==> POST, responds with success/fail: any time we are sending password, secure
