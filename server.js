@@ -3,12 +3,10 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
-const register = require('./controllers/register');
-const signin = require('./controllers/signin');
-const profile = require('./controllers/profile');
-const image = require('./controllers/image');
-const { Client } = require('pg');
-
+const image = require('./controllers/image.js');
+const register = require('./controllers/register.js');
+const signin = require('./controllers/signin.js');
+const profile = require('./controllers/profile.js');
 //connect server to database
 // const client = new Client({
 //   connectionString: process.env.DATABASE_URL,
@@ -26,10 +24,6 @@ const db = knex({
     }
   }
 });
-
-const client = new Client(db);
-client.connect();
-
 /*
 everytime server is restarted, everything is run again
 database initiates with the default users prior to the new user added
