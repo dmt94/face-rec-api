@@ -63,8 +63,8 @@ app.put('/image' , (req, res) => {
   image.handleImage(req, res, db);
 })
 app.post('/imageurl' , (req, res) => {
-  // image.handleApiCall(req, res);
-  res.send('imageurl found');
+  image.handleApiCall(req, res);
+  // res.send('imageurl found');
 })
 
 
