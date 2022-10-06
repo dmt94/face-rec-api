@@ -18,7 +18,7 @@ const client = new Client({
 });
 
 const db = knex({
-  client: 'pg',
+  client: pg,
   connection: client
 });
 
