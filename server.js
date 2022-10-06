@@ -7,12 +7,12 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
-
+const { Client } = require('pg');
 
 //connect server to database
 const db = knex({
   //we are using postgreSQL aka "pg"
-  client: 'pg',
+  client: Client,
   connection: {
     connectionString: process.env.DATABASE_URL, //postgres data url
     ssl: {
