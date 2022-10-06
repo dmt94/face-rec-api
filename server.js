@@ -13,7 +13,7 @@ const db = knex({
   //we are using postgreSQL aka "pg"
   client: 'pg',
   connection: {
-    connectionString : process.env.DATABASE_URL, //postgres data url
+    connectionString: process.env.DATABASE_URL, //postgres data url
     ssl: {
       rejectUnauthorized: false
     }
