@@ -12,13 +12,12 @@ const { Client } = require('pg');
 //connect server to database
 const db = knex({
   //we are using postgreSQL aka "pg"
-  client: Client,
-  connection: {
+  client: new Client({
     connectionString: process.env.DATABASE_URL, //postgres data url
     ssl: {
       rejectUnauthorized: false
     }
-  }
+  })
 });
 //query statement, the knex builder made query request
 // db.select('*')
