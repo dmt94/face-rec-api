@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('Connected successfully!');
+  res.send('It is working!');
 })
 //REGISTER -> for REG, SIGN-IN, PROFILE_ID, IMAGE, we are doing dependency injection
 app.post('/register', (req, res) => { 
