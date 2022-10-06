@@ -7,6 +7,7 @@ const image = require('./controllers/image');
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
+import fetch from 'node-fetch';
 //connect server to database
 // const client = new Client({
 //   connectionString: process.env.DATABASE_URL,
