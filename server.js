@@ -40,6 +40,11 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.send('It is working!');
 })
+
+app.get('/favicon.ico', (req, res) => {
+  res.send('testing icon');
+})
+
 //REGISTER -> for REG, SIGN-IN, PROFILE_ID, IMAGE, we are doing dependency injection
 app.post('/register', (req, res) => { 
   register.handleRegister(req, res, db, bcrypt);
