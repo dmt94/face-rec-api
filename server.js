@@ -13,11 +13,10 @@ const db = knex({
   //we are using postgreSQL aka "pg"
   client: 'pg',
   connection: {
-    host : 'postgresql-dimensional-58983', //postgres data url
-    port : 5432,
-    user : 'mariestayl',
-    password : '',
-    database : 'face-rec-db'
+    host : process.env.DATABASE_URL, //postgres data url
+    ssl: {
+      rejectUnauthorized: false
+    }
   }
 });
 //query statement, the knex builder made query request
