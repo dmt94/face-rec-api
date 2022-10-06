@@ -18,7 +18,7 @@ const { Client } = require('pg');
 // });
 
 const db = knex({
-  client: new Client,
+  client: 'pg',
   connection: {
     connectionString: process.env.DATABASE_URL,
     ssl: {
