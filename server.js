@@ -55,10 +55,12 @@ app.get('/profile/:id', (req, res) => {
 })
 //IMAGE
 app.post('/imageurl', (req, res) => {
-  image.handleApiCall(req, res);
+  // image.handleApiCall(req, res);
+  res.send('received request for imageurl');
 })
 app.post('/image', (req, res, db) => {
-  image.handleImage(req, res, db);
+  // image.handleImage(req, res, db);
+  res.send('received request for image');
 })
 
 
