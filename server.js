@@ -94,7 +94,7 @@ app.post('/imageurl', (req, res) => {
     fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
     .then(data => data.json())
     .then(resultingData =>  {
-      res.send.json(resultingData);
+      res.json(resultingData);
       })
       .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
   
