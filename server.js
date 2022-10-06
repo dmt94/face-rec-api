@@ -66,6 +66,7 @@ app.post('/imageurl', (req, res) => {
     const MODEL_VERSION_ID = '6dc7e46bc9124c5c8824be4822abe105';    
     // const IMAGE_URL = this.state.input; //we need the image input
     const IMAGE_URL = req.body.input; //we need the image input
+    console.log(IMAGE_URL);
     const raw = JSON.stringify({
       "user_app_id": {
           "user_id": USER_ID,
@@ -93,7 +94,7 @@ app.post('/imageurl', (req, res) => {
     fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
     .then(data => data.json())
     .then(resultingData =>  {
-      res.send('received request');
+      res.send.json(resultingData);
       })
       .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
   

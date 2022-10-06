@@ -36,9 +36,10 @@ const handleApiCall = (req, res) => {
   fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
   .then(data => data.json())
   .then(resultingData =>  {
-    res.send('received request');
+    res.json((resultingData));
     })
-    .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
+    .catch(err => 
+    res.status(400).json('Unable to retrieve facial recognition'));
 }//end of handleApiCall
 
 
@@ -53,7 +54,8 @@ const handleApiCall = (req, res) => {
       .catch(err => res.status(400).json('Unable to retrieve entries'))
   }
 
-module.exports = {
-  handleApiCall: handleApiCall,
-  handleImage: handleImage
+
+  module.exports = {
+  handleApiCall,
+  handleImage
 }
