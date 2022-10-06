@@ -27,6 +27,16 @@ const db = knex({
   }
 });
 
+const client = new Client(db);
+client.connect();
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+
 /*
 everytime server is restarted, everything is run again
 database initiates with the default users prior to the new user added
@@ -58,14 +68,22 @@ app.get('/profile/:id', (req, res) => {
 })
 //IMAGE
 
-//update user information, updates entries by increasing count, updates user profile's counter to reflect image uploads
-app.put('/image' , (req, res, db) => {
+app.post('/imageurl', (req, res) => {
+  image.handleApiCall(req, res);
+})
+app.post('/image', (req, res, db) => {
   image.handleImage(req, res, db);
 })
-app.post('/imageurl' , (req, res) => {
-  image.handleApiCall(req, res);
-  // res.send('imageurl found');
-})
+
+
+//update user information, updates entries by increasing count, updates user profile's counter to reflect image uploads
+// app.put('/image' , (req, res, db) => {
+//   image.handleImage(req, res, db);
+// })
+// app.post('/imageurl' , (req, res) => {
+//   image.handleApiCall(req, res);
+//   // res.send('imageurl found');
+// })
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is porting on port ${process.env.PORT}`);
