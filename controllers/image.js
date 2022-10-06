@@ -33,17 +33,17 @@ const handleApiCall = (req, res) => {
       body: raw
   };
 
-  // fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
-  // .then(data => data.json())
-  // .then(resultingData =>  {
-  //   res.json((resultingData));
-  //   })
-  //   .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
+  fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
+  .then(data => data.json())
+  .then(resultingData =>  {
+    res.json((resultingData));
+    })
+    .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
 
-  // fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
-  // .then(data => res.json((data)))
-  // .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
-  res.json('went through image.js');
+  fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
+  .then(data => res.json((data)))
+  .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
+
 }//end of handleApiCall
 
 
