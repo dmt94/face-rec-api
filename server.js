@@ -3,10 +3,10 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
-const image = require('./controllers/image.js');
-const register = require('./controllers/register.js');
-const signin = require('./controllers/signin.js');
-const profile = require('./controllers/profile.js');
+const image = require('./controllers/image');
+const register = require('./controllers/register');
+const signin = require('./controllers/signin');
+const profile = require('./controllers/profile');
 //connect server to database
 // const client = new Client({
 //   connectionString: process.env.DATABASE_URL,
