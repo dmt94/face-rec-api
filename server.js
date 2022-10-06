@@ -55,22 +55,24 @@ app.post('/signin', (req, res) => {
 })
 //PROFILE_ID
 app.get('/profile/:id', (req, res) => {
-  profile.handleProfileGet(req, res, db) 
+  profile.handleProfileGet(req, res, db) ;
 })
 //IMAGE
 //update user information, updates entries by increasing count, updates user profile's counter to reflect image uploads
 app.put('/image' , (req, res) => {
-  image.handleImage(req, res, db)
+  image.handleImage(req, res, db);
 })
 
 app.post('/imageurl' , (req, res) => {
-  image.handleApiCall(req, res)
+  image.handleApiCall(req, res);
 })
 
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT;
 
-app.listen(port, () => {
-  console.log(`app is running on port ${port}`);
+console.log(PORT);
+
+app.listen(PORT, () => {
+  console.log(`app is running on port ${PORT}`);
 })
 /*
 /            (root)==> res = this is working
