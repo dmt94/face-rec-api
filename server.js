@@ -58,7 +58,7 @@ app.get('/profile/:id', (req, res) => {
 //IMAGE
 app.post('/imageurl', (req, res) => {
   // image.handleApiCall(req, res);
-  // res.send('received request for imageurl');
+  res.send('received request for imageurl');
     const USER_ID = 'buipj1i9q5ps';
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = 'e05c24dcc15942f5905ebdaef68d1505';
@@ -92,13 +92,15 @@ app.post('/imageurl', (req, res) => {
         },
         body: raw
     };
+
+
   
-    fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
-    .then(data => data.json())
-    .then(resultingData =>  {
-      res.json(resultingData);
-      })
-      .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
+  // fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
+  // .then(data => data.json())
+  // .then(resultingData =>  {
+  //   res.json(resultingData);
+  //   })
+  //   .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
   
 })
 app.post('/image', (req, res, db) => {
