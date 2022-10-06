@@ -40,6 +40,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('It is working!');
 })
+app.get('/favicon.ico', (req, res) => {
+  res.send('Favicon?');
+})
 
 //REGISTER -> for REG, SIGN-IN, PROFILE_ID, IMAGE, we are doing dependency injection
 app.post('/register', (req, res) => { 
