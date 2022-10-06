@@ -67,11 +67,9 @@ app.post('/imageurl' , (req, res) => {
   image.handleApiCall(req, res);
 })
 
-const PORT = process.env.PORT || 3000;
-
-console.log(PORT);
-
-app.listen(PORT);
+app.listen(3000, () => {
+  console.log('app is running on port 3000')
+});
 /*
 /            (root)==> res = this is working
 /signin            ==> POST, responds with success/fail: any time we are sending password, secure
