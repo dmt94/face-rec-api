@@ -10,15 +10,22 @@ const image = require('./controllers/image');
 const { Client } = require('pg');
 
 //connect server to database
-const db = knex({
-  //we are using postgreSQL aka "pg"
-  client: new Client({
-    connectionString: process.env.DATABASE_URL, //postgres data url
-    ssl: {
-      rejectUnauthorized: false
-    }
-  })
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
+
+client.connect();
+
+const db = knex({
+  client: 'pg',
+  connection: client
+});
+
+
+
 //query statement, the knex builder made query request
 // db.select('*')
 //   .from('users').then(data => {
