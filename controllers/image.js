@@ -39,8 +39,7 @@ const handleApiCall = (req, res) => {
     console.log(resultingData);
     res.json((resultingData));
     })
-    .catch(err => 
-    res.status(400).json('Unable to retrieve facial recognition'));
+    .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
 }//end of handleApiCall
 
 

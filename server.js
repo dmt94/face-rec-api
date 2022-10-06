@@ -16,7 +16,6 @@ const { Client } = require('pg');
 //     rejectUnauthorized: false
 //   }
 // });
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 
 const db = knex({
   client: 'pg',
