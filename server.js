@@ -29,13 +29,6 @@ const db = knex({
 
 const client = new Client(db);
 client.connect();
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
 
 /*
 everytime server is restarted, everything is run again
@@ -51,9 +44,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('It is working!');
 })
-app.get('/favicon.ico', (req, res) => {
-  res.send('Favicon?');
-})
+// app.get('/favicon.ico', (req, res) => {
+//   res.send('Favicon?');
+// })
 //REGISTER -> for REG, SIGN-IN, PROFILE_ID, IMAGE, we are doing dependency injection
 app.post('/register', (req, res) => { 
   register.handleRegister(req, res, db, bcrypt);
