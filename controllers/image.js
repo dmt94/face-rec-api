@@ -1,4 +1,5 @@
 const Clarifai = require('clarifai');
+const { json } = require('express');
 const app = new Clarifai.App({
   apiKey: '0afee42ef93a497180797ad4650d128b'
 });
@@ -7,8 +8,9 @@ const handleApiCall = (req, res) => {
   // app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
   // .then(resultingData => {res.json(resultingData)})
   // .catch(err => res.status(400).json('error grabbing data')
-  res.json(app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input))
-  // .then(data =>{res.json(data)}).catch(err => res.status(400).json('error'))
+  app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+  .then(data =>json(data)).then(result => res.json(result))
+  .catch(err => res.status(400).json('error'))
 }
 
  //updates entries after sending successful request indicating an image is uploaded
