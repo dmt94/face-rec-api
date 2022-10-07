@@ -8,11 +8,12 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const Clarifai = require('clarifai');
+
 const app = express();
 app.use(bodyParser.json())
-app.use(express.urlencoded({extended: false}));
+// app.use(express.urlencoded({extended: false}));
 app.use(cors());
-app.use(express.json());
+// app.use(express.json());
 
 const db = knex({
   client: 'pg',
