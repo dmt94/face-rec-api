@@ -1,16 +1,28 @@
 const Clarifai = require('clarifai');
-const app = new Clarifai.App({
-  apiKey: '0afee42ef93a497180797ad4650d128b'
-});
 
-const handleApiCall = (req, res) => {
-  // app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
-  // .then(resultingData => {res.json(resultingData)})
-  // .catch(err => res.status(400).json('error grabbing data')
+// const app = new Clarifai.App({
+//   apiKey: '0afee42ef93a497180797ad4650d128b'
+// });
+
+const app = new Clarifai.App({
+  apiKey: 'd39ba5d8c4f143389356ae5a0bf7991a'
+ });
+
+ const handleApiCall = (req, res) => { 
   app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
-  .then(data =>json(data)).then(result => res.json(result))
+  .then(data =>{res.json(data)})
   .catch(err => res.status(400).json('error'))
 }
+
+
+// const handleApiCall = (req, res) => {
+//   // app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+//   // .then(resultingData => {res.json(resultingData)})
+//   // .catch(err => res.status(400).json('error grabbing data')
+//   app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+//   .then(data =>json(data)).then(result => res.json(result))
+//   .catch(err => res.status(400).json('error'))
+// }
 
  //updates entries after sending successful request indicating an image is uploaded
  const handleImage = (req, res, db) => {
