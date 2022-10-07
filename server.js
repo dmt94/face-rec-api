@@ -8,6 +8,7 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const { response } = require('express');
+const Clarifai = require('clarifai');
 
 const app = express();
 // app.use(bodyParser.json())
