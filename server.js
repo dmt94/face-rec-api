@@ -59,7 +59,10 @@ app.post('/imageurl', (req, res) => {
   .then(data => data.json()).then(resultingData => {
     res.json(resultingData);
   })
-  .catch(err => res.status(400).json(err))
+  .catch(err => {
+    // res.status(400).json(err)
+    res.json(clarifai.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input))
+  })
 })
 
 app.listen(process.env.PORT || 4000, () => {
