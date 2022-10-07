@@ -4,9 +4,10 @@ const app = new Clarifai.App({
 });
 
 const handleApiCall = (req, res) => {
-  app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
-  .then(resultingData => {res.json(resultingData)})
-  .catch(err => res.status(400).json('error grabbing data'))
+  // app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+  // .then(resultingData => {res.json(resultingData)})
+  // .catch(err => res.status(400).json('error grabbing data'))
+  res.json('returning data');
 }
 
  //updates entries after sending successful request indicating an image is uploaded
