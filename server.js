@@ -11,9 +11,9 @@ const { response } = require('express');
 
 const app = express();
 app.use(bodyParser.json())
-// app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false}));
 app.use(cors());
-// app.use(express.json());
+app.use(express.json());
 
 const db = knex({
   client: 'pg',
