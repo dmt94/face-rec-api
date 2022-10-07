@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
@@ -10,7 +10,7 @@ const profile = require('./controllers/profile');
 const { response } = require('express');
 
 const app = express();
-app.use(bodyParser.json())
+// app.use(bodyParser.json())
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
 app.use(express.json());
