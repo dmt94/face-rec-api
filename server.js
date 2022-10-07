@@ -58,6 +58,7 @@ app.get('/profile/:id', (req, res) => {
 //IMAGE
 app.post('/imageurl', (req, res) => {
   // image.handleApiCall(req, res);
+  console.log(req.body);
   res.send('received request for imageurl');
     const USER_ID = 'buipj1i9q5ps';
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
