@@ -8,9 +8,6 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const Clarifai = require('clarifai');
-const clarifaiApp = new Clarifai.App({
-  apiKey: '0afee42ef93a497180797ad4650d128b'
-});
 const app = express();
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended: false}));
@@ -52,11 +49,13 @@ app.put('/image', (req, res) => {
 });
 app.post('/imageurl', (req, res) => {
   // image.handleApiCall(req, res)
-  clarifaiApp.Model.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+  const clarifaiApp = new Clarifai.App({
+    apiKey: '0afee42ef93a497180797ad4650d128b'
+  });
+  clarifaiApp.model.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
   .then(data => {
     res.json(data)
-  })
-  .catch(err => res.status(400).json('unable to grab prediction'))
+  }).catch(err => res.status(400).json('unable to grab prediction'))
 })
 
 app.listen(process.env.PORT || 4000, () => {
