@@ -15,11 +15,11 @@ const handleSignIn =  (req, res, db, bcrypt) => {
             })
             .catch(err => res.status(400).json('Unable to retrieve user'))
         } else {
-            res.status(400).json('wrong credentials!')
+            res.status(400).json('invalid credentials!')
         }
         
     })
-    .catch(err => res.status(400).json('wrong credentials!'))
+    .catch(err => res.status(400).json('invalid credentials!'))
 }
 
 module.exports = {
