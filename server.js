@@ -33,9 +33,6 @@ database is superior bc they run on disk, so that every info is stored efficient
 app.get('/', (req, res) => {
   res.send('It is working!');
 });
-// app.get('/favicon.ico', (req, res) => {
-//   res.send('Favicon?');
-// })
 //REGISTER -> for REG, SIGN-IN, PROFILE_ID, IMAGE, we are doing dependency injection
 app.post('/register', (req, res) => { 
   register.handleRegister(req, res, db, bcrypt);
@@ -50,7 +47,7 @@ app.get('/profile/:id', (req, res) => {
 });
 //IMAGE
 app.post('/image', (req, res) => {
-  image.handleImage(req, res);
+  image.handleImage(req, res, db);
 });
 app.post('/imageurl', (req, res) => {
   image.handleApiCall(req, res);
