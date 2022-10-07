@@ -44,7 +44,7 @@
 const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({
-    apiKey: 'afaf3c8d76dc499ca88353fc81ab92fb'
+    apiKey: '0afee42ef93a497180797ad4650d128b'
    });
 
 const handleApiCall = (req, res) => {
@@ -52,8 +52,7 @@ const handleApiCall = (req, res) => {
     .then(data => {
       res.json(data)
     })
-    .catch(err => res.status(400)
-    .json('error grabbing data'))
+    .catch(err => res.status(400).json('error grabbing data'))
 }
 
  //updates entries after sending successful request indicating an image is uploaded
