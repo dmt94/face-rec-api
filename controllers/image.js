@@ -41,13 +41,12 @@
 //     .catch(err => 
 //     res.status(400).json('Unable to retrieve facial recognition'));
 // }//end of handleApiCall
-const Clarifai = require('clarifai');
-
-const app = new Clarifai.App({
-  apiKey: '0afee42ef93a497180797ad4650d128b'
-});
 
 const handleApiCall = (req, res) => {
+  const Clarifai = require('clarifai');
+  const app = new Clarifai.App({
+    apiKey: '0afee42ef93a497180797ad4650d128b'
+  });
     app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
     .then(data => data.json()).then(resultingData => {
       res.json(resultingData)
