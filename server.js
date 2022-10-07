@@ -1,5 +1,5 @@
 const express = require('express');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
@@ -12,7 +12,7 @@ const clarifaiApp = new Clarifai.App({
   apiKey: '0afee42ef93a497180797ad4650d128b'
 });
 const app = express();
-// app.use(bodyParser.json())
+app.use(bodyParser.json())
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
 app.use(express.json());
@@ -44,7 +44,7 @@ app.post('/signin', (req, res) => {
 });
 //PROFILE_ID
 app.get('/profile/:id', (req, res) => {
-  profile.handleProfileGet(req, res, db) ;
+  profile.handleProfileGet(req, res, db);
 });
 //IMAGE
 app.put('/image', (req, res) => {
@@ -52,9 +52,9 @@ app.put('/image', (req, res) => {
 });
 app.post('/imageurl', (req, res) => {
   // image.handleApiCall(req, res)
-  clarifaiApp.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+  clarifaiApp.Model.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
   .then(data => {
-    // res.json(data))
+    res.json(data)
   })
   .catch(err => res.status(400).json('unable to grab prediction'))
 })
