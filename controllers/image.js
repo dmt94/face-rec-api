@@ -19,7 +19,7 @@
 
 
 module.exports = {
-  handleApiCall: handleApiCall,
+  // handleApiCall: handleApiCall,
   handleImage: handleImage
 }
 
