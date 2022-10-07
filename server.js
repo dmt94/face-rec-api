@@ -59,7 +59,7 @@ app.post('/imageurl', (req, res) => {
   .then(data => data.json()).then(resultingData => {
     res.json(resultingData);
   })
-  .catch(err => res.status(400).json('unable to grab prediction'))
+  .catch(err => res.status(400).json(err))
 })
 
 app.listen(process.env.PORT || 4000, () => {
