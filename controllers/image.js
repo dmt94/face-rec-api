@@ -5,9 +5,10 @@ const clarifaiApp = new Clarifai.App({
  });
 
  const handleApiCall = (req, res) => { 
-  clarifaiApp.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
-  .then(data =>{res.json(data)})
-  .catch(err => res.status(400).json('error'))
+  // clarifaiApp.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+  // .then(data =>{res.json(data)})
+  // .catch(err => res.status(400).json('error'))
+  res.send(clarifaiApp);
 }
 
 
