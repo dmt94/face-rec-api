@@ -32,7 +32,7 @@ database initiates with the default users prior to the new user added
 database is superior bc they run on disk, so that every info is stored efficiently 
 */
 const app = express();
-// app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false}));
 app.use(cors());
 app.use(express.json());
 
