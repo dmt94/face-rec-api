@@ -7,7 +7,8 @@ const image = require('./controllers/image');
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
-// const fetch = require('node-fetch');
+const fetch = require('node-fetch');
+const { response } = require('express');
 
 //connect server to database
 // const client = new Client({
@@ -93,12 +94,24 @@ app.post('/imageurl', (req, res) => {
         },
         body: raw
     };
-  fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
-  .then(data => data.json())
-  .then(resultingData =>  {
-    res.json(resultingData);
-    })
-    .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
+
+  async function fetchAPI() {
+    try {
+      const fetchResponse = await fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions);
+
+      if (!fetchResponse.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = await fetchResponse.json();
+      return res.json(result);
+      // return result;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  fetchAPI()
 })
 app.post('/image', (req, res, db) => {
   // image.handleImage(req, res, db);
