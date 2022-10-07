@@ -56,9 +56,10 @@ app.post('/imageurl', (req, res) => {
   // image.handleApiCall(req, res)
 
   clarifai.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
-  .then(data => {
-    res(data)
-  }).catch(err => res.status(400).json('unable to grab prediction'))
+  .then(data => data.json()).then(resultingData => {
+    res.json(resultingData);
+  })
+  .catch(err => res.status(400).json('unable to grab prediction'))
 })
 
 app.listen(process.env.PORT || 4000, () => {
