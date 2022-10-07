@@ -94,28 +94,12 @@ app.post('/imageurl', (req, res) => {
         },
         body: raw
     };
-
-  async function fetchAPI() {
-    try {
-      const fetchResponse = await fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions);
-
-      if (!fetchResponse.ok) {
-        throw new Error(`Error! status: ${response.status}`);
-      }
-
-      const result = await fetchResponse.json();
-      return res.json(result);
-      // return result;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  fetchAPI()
+    res.send('urlimgrequest received');
 })
 app.post('/image', (req, res, db) => {
   // image.handleImage(req, res, db);
   const { id } = req.body;
+  res.send(`img request received ${db('users')}`);
   db('users').where('id', '=', id)
     .increment('entries', 1)
     .returning('entries').then(entries => {
