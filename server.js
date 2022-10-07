@@ -7,7 +7,7 @@ const image = require('./controllers/image');
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 const { response } = require('express');
 
 //connect server to database
