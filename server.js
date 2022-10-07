@@ -10,25 +10,25 @@ const profile = require('./controllers/profile');
 const { response } = require('express');
 
 const app = express();
-app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.json())
+// app.use(express.urlencoded({extended: false}));
 app.use(cors());
-app.use(express.json());
+// app.use(express.json());
 
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
+    host: process.env.DATABASE_URL
+  },
+  ssl: {
       rejectUnauthorized: false
     }
-  }
 });
 /*
 everytime server is restarted, everything is run again
 database initiates with the default users prior to the new user added
 database is superior bc they run on disk, so that every info is stored efficiently 
 */
-
 app.get('/', (req, res) => {
   res.send('It is working!');
 });
@@ -45,14 +45,14 @@ app.get('/profile/:id', (req, res) => {
   profile.handleProfileGet(req, res, db) ;
 });
 //IMAGE
-app.post('/image', (req, res) => {
+app.put('/image', (req, res) => {
   image.handleImage(req, res, db);
 });
 app.post('/imageurl', (req, res) => {
-  image.handleApiCall(req, res);
-});
+  image.handleApiCall(req, res)
+})
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log(`app is porting on port ${process.env.PORT}`);
 });
 /*
