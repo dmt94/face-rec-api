@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 app.use(cors())
 const db = knex({
     client: 'pg',
-    connection: {
+    connectionString: {
       host : process.env.DATABASE_URL,
     },
     ssl: {
