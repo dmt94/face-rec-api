@@ -1,3 +1,32 @@
+const Clarifai = require('clarifai');
+const app = new Clarifai.App({
+  apiKey: '0afee42ef93a497180797ad4650d128b'
+});
+
+const handleApiCall = (req, res) => {
+  app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+  .then(resultingData => {res.json(resultingData)})
+  .catch(err => res.status(400).json('error grabbing data'))
+}
+
+ //updates entries after sending successful request indicating an image is uploaded
+ const handleImage = (req, res, db) => {
+  const { id } = req.body;
+  db('users').where('id', '=', id)
+  .increment('entries', 1)
+  .returning('entries').then(entries => {
+    res.json(entries[0].entries)
+  }).catch(err => res.status(400).json('Unable to retrieve entries'))
+  }
+
+
+module.exports = {
+  handleApiCall: handleApiCall,
+  handleImage: handleImage
+}
+
+
+
     //CLARIFAI REST API
 // const handleApiCall = (req, res) => {
 //   const USER_ID = 'buipj1i9q5ps';
@@ -41,30 +70,3 @@
 //     .catch(err => 
 //     res.status(400).json('Unable to retrieve facial recognition'));
 // }//end of handleApiCall
-
-const handleApiCall = (req, res) => {
-  const Clarifai = require('clarifai');
-  const app = new Clarifai.App({
-    apiKey: '0afee42ef93a497180797ad4650d128b'
-  });
-    app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
-    .then(data => data.json()).then(resultingData => {
-      res.json(resultingData)
-    }).catch(err => res.status(400).json('error grabbing data'))
-}
-
- //updates entries after sending successful request indicating an image is uploaded
- const handleImage = (req, res, db) => {
-  const { id } = req.body;
-  db('users').where('id', '=', id)
-  .increment('entries', 1)
-  .returning('entries').then(entries => {
-    res.json(entries[0].entries)
-  }).catch(err => res.status(400).json('Unable to retrieve entries'))
-  }
-
-
-module.exports = {
-  handleApiCall: handleApiCall,
-  handleImage: handleImage
-}
