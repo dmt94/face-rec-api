@@ -53,7 +53,7 @@ const handleApiCall = (req, res) => {
       res.json(data)
     })
     .catch(err => res.status(400)
-    .json('error'))
+    .json('error grabbing data'))
 }
 
  //updates entries after sending successful request indicating an image is uploaded
