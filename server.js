@@ -93,20 +93,22 @@ app.post('/imageurl', (req, res) => {
         },
         body: raw
     };
-
-
-  
-  // fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
-  // .then(data => data.json())
-  // .then(resultingData =>  {
-  //   res.json(resultingData);
-  //   })
-  //   .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
-  
+  fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
+  .then(data => data.json())
+  .then(resultingData =>  {
+    res.json(resultingData);
+    })
+    .catch(err => res.status(400).json('Unable to retrieve facial recognition'));
 })
 app.post('/image', (req, res, db) => {
   // image.handleImage(req, res, db);
-  res.send('received request for image');
+  const { id } = req.body;
+  db('users').where('id', '=', id)
+    .increment('entries', 1)
+    .returning('entries').then(entries => {
+      res.json(entries[0].entries)
+    })
+    .catch(err => res.status(400).json('Unable to retrieve entries'))
 })
 
 
