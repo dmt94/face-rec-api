@@ -9,6 +9,10 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const Clarifai = require('clarifai');
 
+const clarifai = new Clarifai.App({
+  apiKey: 'a667abf5a45f4481a94c6c0fdbfe1738'
+ });
+
 const app = express();
 app.use(bodyParser.json())
 // app.use(express.urlencoded({extended: false}));
@@ -50,10 +54,8 @@ app.put('/image', (req, res) => {
 });
 app.post('/imageurl', (req, res) => {
   // image.handleApiCall(req, res)
-  const clarifaiApp = new Clarifai.App({
-    apiKey: '0afee42ef93a497180797ad4650d128b'
-  });
-  clarifaiApp.models.predict(Clarifai.FACE_DETECT_MODEL, 'https://media1.popsugar-assets.com/files/thumbor/hnVKqXE-xPM5bi3w8RQLqFCDw_E/475x60:1974x1559/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2019/09/09/023/n/1922398/9f849ffa5d76e13d154137.01128738_/i/Taylor-Swift.jpg')
+
+  clarifai.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
   .then(data => {
     res.json(data)
   }).catch(err => res.status(400).json('unable to grab prediction'))
