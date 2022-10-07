@@ -8,7 +8,8 @@ const clarifaiApp = new Clarifai.App({
   // clarifaiApp.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
   // .then(data =>{res.json(data)})
   // .catch(err => res.status(400).json('error'))
-  res.send(clarifaiApp.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input));
+  // res.send(clarifaiApp.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input));
+  res.send(req.body.input);
 }
 
 
